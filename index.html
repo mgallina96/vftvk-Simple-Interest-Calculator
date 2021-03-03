@@ -1,16 +1,61 @@
-<html>
-    <head>
+<html lang="en">
+<head>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1>Simple Interest Calculator</h1>
-
-        Amount <input type="number"  id="principal">  <br/>
-        Rate <input type="number"  id="rate">  <br/>
-        No. of Years <input type="number"  id="years">  <br/>
-        Interest : <span id="result"></span><br>
-
-        <button onclick="compute()">Compute</button>
-    </body>
+    <link href="style.css" rel="stylesheet">
+    <title>Web App - Simple Interest Calculator</title>
+</head>
+<body onload="initPage()">
+<div class="backgroundFrame">
+    <div class="parent">
+        <header>
+            <h1>Simple Interest Calculator</h1>
+        </header>
+        <div class="main">
+            <div class="formRow">
+                <table>
+                    <tr>
+                        <td class="padded"><label for="principal">Amount</label></td>
+                        <td class="padded"><input id="principal" min="0" onchange="setPrincipal(this.value)" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td></td><td><span id="principalValidationAlert"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="padded"><label for="rate">Interest Rate</label><label for="rateValue"></label></td>
+                        <td class="padded">
+                            <input id="rate" max="20" min="1" onchange="setRateValue(this.value)" step="0.1"
+                                   type="range">
+                            <input id="rateValue" max="20" min="1" onchange="setRateSlider(this.value)" step="0.1"
+                                   type="number">%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td><td><span id="rateValidationAlert"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="padded"><label for="years">No. of Years</label></td>
+                        <td class="padded"><input id="years" list="numberOfYears" onchange="setYear(this.value)" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td></td><td><span id="yearsValidationAlert"></span></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="compute()">Compute Interest</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="result">
+                If you deposit <span class="outputValue" id="principalOutput"></span>,<br/>
+                at an interest rate of <span class="outputValue" id="rateOutput"></span>,<br/>
+                you will receive an amount of <span class="outputValue" id="output"></span>,<br/>
+                in the year <span class="outputValue" id="yearOutput"></span>.
+            </div>
+        </div>
+        <footer>
+            <span>&#169;</span> Everyone Can Get Rich
+        </footer>
+        <datalist id="numberOfYears"></datalist>
+    </div>
+</div>
+</body>
 </html>
